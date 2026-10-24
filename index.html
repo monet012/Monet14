@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YABATECH CGPA Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="nav"><div class="bn" onclick="go('home')"><img src="IMG-20261009-WA0049.jpg" alt=""><span>CGPA CALCULATOR</span></div><button id="nh" class="act" onclick="go('home')">Home</button><button id="nc" onclick="go('app')">Calculator</button><button id="nd" onclick="go('dept')">Departments</button><button id="ns" onclick="go('stats')">Stats</button><button id="ne" onclick="go('exams')">Exams</button><button class="lg" id="nl" onclick="lg()">Login</button></div>
+
+<div class="w" id="home">
+<div class="hero"><div class="brand"><img src="IMG-20261009-WA0049.jpg" alt="YABATECH logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fb">YABA<br>TECH</span><b>YABA COLLEGE OF TECHNOLOGY</b></div><svg class="logo" viewBox="0 0 230 96" role="img" aria-label="CGPA Calculator logo" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="226" height="92" rx="18" fill="rgba(255,255,255,.07)" stroke="#d9b45a" stroke-width="2"/><rect x="2" y="44" width="226" height="6" fill="#e3c06a" opacity=".0"/><path d="M18 20 L34 12 L50 20 L34 28 Z M25 24 V32 Q34 38 43 32 V24" fill="none" stroke="#e3c06a" stroke-width="3" stroke-linejoin="round"/><text x="62" y="46" font-family="Impact,'Arial Black',Arial,sans-serif" font-size="42" font-weight="900" fill="#e3c06a" letter-spacing="2">CGPA</text><rect x="14" y="56" width="202" height="4" rx="2" fill="#e3c06a"/><text x="115" y="82" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="15" font-weight="900" fill="#fff" letter-spacing="5">CALCULATOR</text></svg><h1>Know Your GPA. Own Your Future.</h1><p>The free CGPA calculator and grade-improvement planner built for YABATECH students. Calculate, track and plan your way to a better class of degree.</p><button class="btn" onclick="setMode('signup');show('auth')">Get started free</button><button class="btn o" onclick="go('app')">Open calculator</button><div id="live" class="live hide"><i></i><b id="lo">0</b> online now · <b id="lv">0</b> total visits</div></div>
+<div class="card"><h2>Everything you need to level up</h2><div class="fg">
+<div class="card">🧮<b>Semester GPA</b><span>Add courses, units and grades. Get your GPA instantly.</span></div>
+<div class="card">📈<b>CGPA Tracker</b><span>Combine past results with this semester to see your running CGPA.</span></div>
+<div class="card">🎯<b>Target Planner</b><span>See the exact GPA you need to reach your goal class of degree.</span></div>
+<div class="card">🧭<b>Department Plan</b><span>Advice for your department and level, plus the courses dragging you down.</span></div></div></div>
+<div class="card"><h2>How it works</h2><ol class="st"><li>Create your free account with your matric number.</li><li>Enter your courses and grades.</li><li>Get your CGPA, class of degree and a personal plan to improve.</li></ol></div>
+<div class="card" style="text-align:center"><h2>Ready to know where you stand?</h2><button class="btn" onclick="setMode('signup');show('auth')">Create my account</button></div>
+</div>
+
+<div class="w hide" id="dept"><div class="mapw"><div class="mtabs" id="mt"></div><div class="map" id="map"></div><p class="note" style="margin:6px 4px 0">Tap a school to see its departments and where to find them.</p></div>
+<div class="card"><h2>📍 Find your department</h2><p class="note">Search by department name or pick a school to see where to go on campus.</p>
+<input id="dq" placeholder="Search department..." oninput="renderDept()"><label>School</label><select id="ds" onchange="SEL=this.value;renderDept();renderMap()"><option value="">All schools</option></select></div>
+<div class="dl" id="dl"></div></div>
+
+<div class="w hide" id="stats"><div class="card"><h2>📊 Share your GPA anonymously</h2>
+<p class="note">Help other students see how YABATECH is doing. Only your department, level and GPA are shared. No name or matric number is sent.</p>
+<label>Department</label><select id="xd"></select>
+<label>Level</label><select id="xl"><option>ND1</option><option>ND2</option><option>HND1</option><option>HND2</option></select>
+<label>Your GPA / CGPA (0 to 4.0)</label><input id="xg" type="number" step="0.01" min="0" max="4" inputmode="decimal" placeholder="e.g. 3.45">
+<label class="ck"><input id="xc" type="checkbox"><span>I agree to share my department, level and GPA anonymously.</span></label>
+<button class="btn" style="width:100%;margin-top:10px" onclick="shareGPA()">Share</button><p id="xm" class="note"></p></div>
+<div class="card"><h2>YABATECH GPA Statistics</h2>
+<div class="st3"><div class="res"><div class="big" id="xt">-</div><span class="note">Students</span></div><div class="res"><div class="big" id="xa">-</div><span class="note">Average GPA</span></div><div class="res"><div class="big" id="xp">-</div><span class="note">3.50 and above</span></div></div>
+<div id="xb" style="margin-top:12px"></div></div></div>
+
+<div class="w hide" id="exams"><div class="card"><h2>🗓️ Find your exam venue</h2>
+<div id="esamp" class="samp hide">⚠️ Sample data for demonstration. Real exam venues will be added before exams. Do not rely on this yet.</div>
+<p class="note">Enter your matric number to see your exam date, time and venue.</p>
+<label>Matric number</label><input id="em" placeholder="F/ND/23/3210001" autocapitalize="characters" autocomplete="off">
+<button class="btn" style="width:100%;margin-top:10px" onclick="findExam()">Find my venue</button>
+<div id="eo"></div></div></div>
+
+<div class="w hide" id="auth"><div class="card" style="max-width:420px;margin:10px auto">
+<h2>Student access</h2><p class="note">For YABATECH students only. Use your matric number.</p>
+<div class="tabs"><button id="at1" class="on" onclick="setMode('login')">Login</button><button id="at2" onclick="setMode('signup')">Sign up</button></div>
+<div id="an" class="hide"><label>Full name</label><input id="ai" autocomplete="name"></div>
+<div id="aew" class="hide"><label>Email</label><input id="ae" type="email" autocomplete="email" placeholder="you@example.com"></div><div id="gmw"><label>Matric number</label><input id="gm" placeholder="F/ND/23/3210001" autocapitalize="characters" autocomplete="username"></div><div id="ax" class="hide"><label>Department</label><select id="ad"></select><label>Level</label><select id="al"><option>ND1</option><option>ND2</option><option>HND1</option><option>HND2</option></select></div>
+<label>Password</label><input id="gp" type="password" autocomplete="current-password"><div id="axc" class="hide"><label class="ck"><input id="ac" type="checkbox"><span>I agree that my name, matric number, department, level and email are saved to create my account.</span></label></div><p id="fp" class="note hide" style="margin-top:8px"><a href="#" onclick="forgot();return false">Forgot password?</a></p>
+<div id="err"></div><button class="btn" id="ab" style="width:100%;margin-top:10px" onclick="auth()">Login</button>
+<p class="note" style="margin-top:10px"><span id="acn">Accounts are saved on this device only.</span> <a href="#" onclick="go('home');return false">Back to Home</a></p></div></div>
+<div class="w hide" id="app">
+<div class="card"><h2 id="wel">👋 Welcome</h2><p class="note">Pick a tab to calculate your GPA, track your CGPA or plan your next semester.</p></div>
+<div class="tabs" id="tabs">
+<button class="on" data-t="me">My Plan 🔥</button><button data-t="gpa">GPA</button><button data-t="cgpa">CGPA</button><button data-t="plan">Target</button><button data-t="tips">Gist</button>
+</div>
+
+<section id="me">
+<div class="card">
+<h2>Your own plan, Yabite</h2>
+<label>Name (optional)</label><input id="mn" placeholder="e.g. Monet">
+<div class="g2"><div><label>Department</label><select id="md"></select></div>
+<div><label>Level</label><select id="ml"><option>ND1</option><option>ND2</option><option>HND1</option><option>HND2</option></select></div>
+<div><label>Your CGPA</label><input id="mc" type="number" step="0.01" min="0" max="4" inputmode="decimal"></div>
+<div><label>Units completed</label><input id="mu" type="number" min="0" inputmode="numeric"></div></div>
+<button class="btn" onclick="me()">Oya, build my plan</button>
+<div id="mout"></div>
+</div>
+</section>
+
+<section id="gpa" class="hide">
+<div class="card">
+<h2>Semester GPA</h2>
+<div id="rows"></div>
+<button class="btn g" onclick="addRow()">+ Add course</button>
+<button class="btn" onclick="calc()">Oya, calculate</button>
+<div id="out"></div>
+</div>
+</section>
+
+<section id="cgpa" class="hide">
+<div class="card">
+<h2>Cumulative GPA (CGPA)</h2>
+<div class="g2"><div><label>Previous CGPA</label><input id="pc" type="number" step="0.01" min="0" max="4" inputmode="decimal"></div>
+<div><label>Previous total units</label><input id="pu" type="number" min="0" inputmode="numeric"></div>
+<div><label>This semester GPA</label><input id="sg" type="number" step="0.01" min="0" max="4" inputmode="decimal"></div>
+<div><label>This semester units</label><input id="su" type="number" min="0" inputmode="numeric"></div></div>
+<p class="note">Tip: calculate your semester GPA on the first tab, then enter it here.</p>
+<button class="btn" onclick="cg()">Oya, calculate CGPA</button>
+<div id="cout"></div>
+</div>
+</section>
+
+<section id="plan" class="hide">
+<div class="card">
+<h2>Wetin I need to score?</h2>
+<div class="g2"><div><label>Current CGPA</label><input id="tc" type="number" step="0.01" min="0" max="4" inputmode="decimal"></div>
+<div><label>Units completed</label><input id="tu" type="number" min="0" inputmode="numeric"></div>
+<div><label>Target CGPA</label><input id="tt" type="number" step="0.01" min="0" max="4" inputmode="decimal"></div>
+<div><label>Units still to take</label><input id="tr" type="number" min="1" inputmode="numeric"></div></div>
+<button class="btn" onclick="plan()">Show me the target</button>
+<div id="pout"></div>
+</div>
+</section>
+
+<section id="tips" class="hide">
+<div class="card">
+<h2>Gist: how to raise your GPA</h2>
+<ul>
+<li><b>Chase high-unit courses first.</b> A 4-unit course moves your GPA twice as much as a 2-unit one.</li>
+<li><b>Attend every class and practical.</b> CA (continuous assessment) usually carries 30–40% of the score, so it is easy marks.</li>
+<li><b>Never skip CA tests and assignments.</b> Zero in CA is hard to recover from in the exam.</li>
+<li><b>Use past questions</b> from your department and study in a group for hard courses.</li>
+<li><b>Resit failed courses early.</b> An F adds units but zero points; clearing it lifts your CGPA.</li>
+<li><b>Plan your reading</b> two weeks before exams, not the night before.</li>
+<li><b>Talk to your course adviser</b> early if you are below 2.00 (risk of probation).</li>
+</ul>
+<p class="note">Use the "Biggest drag" list on the GPA tab to see which courses cost you the most points.</p>
+</div>
+<div class="card">
+<h2>Grading scale</h2>
+<div class="wrap"><table id="scale"></table></div>
+<p class="note">Based on the standard NBTE 4.0 polytechnic scale. Always confirm with your department or the school handbook, as rules can change.</p>
+</div>
+</section>
+</div>
+
+<div class="ft">© YABATECH CGPA Calculator · Always confirm grading rules with your department.</div>
+<script src="departments.js"></script>
+<script src="exams.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

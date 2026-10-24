@@ -1,0 +1,41 @@
+/* DEPARTMENT LOCATIONS
+   Fill in "l" (building/block) and optionally "d" (directions) for each department.
+   Example: {n:"Computer Science", s:"Science & Computing", l:"School of Science, Block B, 2nd Floor", d:"Behind the main library"}
+   Leave l:"" to show "Location coming soon". */
+window.DEPTS=[
+  {n:"Computer Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Electrical/Electronic Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Mechanical Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Civil Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Chemical Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Agricultural & Bio-Environmental Eng.", s:"Engineering & Technology", l:"", d:""},
+  {n:"Welding & Fabrication", s:"Engineering & Technology", l:"", d:""},
+  {n:"Metallurgical Engineering", s:"Engineering & Technology", l:"", d:""},
+  {n:"Computer Science", s:"Science & Computing", l:"", d:""},
+  {n:"Statistics", s:"Science & Computing", l:"", d:""},
+  {n:"Mathematics", s:"Science & Computing", l:"", d:""},
+  {n:"Science Laboratory Technology", s:"Science & Computing", l:"", d:""},
+  {n:"Food Technology", s:"Science & Computing", l:"", d:""},
+  {n:"Biochemistry/Chemical Sciences", s:"Science & Computing", l:"", d:""},
+  {n:"Physics/Electronics", s:"Science & Computing", l:"", d:""},
+  {n:"Architecture", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Building Technology", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Estate Management", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Quantity Surveying", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Urban & Regional Planning", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Surveying & Geo-informatics", s:"Environmental & Built Environment", l:"", d:""},
+  {n:"Accountancy", s:"Business & Management", l:"", d:""},
+  {n:"Banking & Finance", s:"Business & Management", l:"", d:""},
+  {n:"Business Administration", s:"Business & Management", l:"", d:""},
+  {n:"Marketing", s:"Business & Management", l:"", d:""},
+  {n:"Office Technology & Management", s:"Business & Management", l:"", d:""},
+  {n:"Public Administration", s:"Business & Management", l:"", d:""},
+  {n:"Fine Art", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Graphic Design", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Textile/Fashion Design", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Industrial Design", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Mass Communication", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Library & Information Science", s:"Art, Design & Communication", l:"", d:""},
+  {n:"Technical Education (Electrical, Mechanical, Building)", s:"Technical Education", l:"", d:""},
+  {n:"Vocational/Technical Teacher Education", s:"Technical Education", l:"", d:""}
+];
